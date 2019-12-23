@@ -24,7 +24,8 @@ from lucid.misc.io import load
 import numpy as np
 from cachetools.func import lru_cache
 
-PATH_TEMPLATE = "gs://modelzoo/aligned-activations/{}/{}-{:05d}-of-01000.npy"
+PATH_TEMPLATE = "gs://modelzoo/aligned-activations/{}/{}-{:05d}-of-01000.npy" if not "LUCID_PATH_TEMPLATE" in globals() else LUCID_PATH_TEMPLATE
+print("PATH_TEMPLATE: ", PATH_TEMPLATE)
 PAGE_SIZE = 10000
 NUMBER_OF_AVAILABLE_SAMPLES = 100000
 assert NUMBER_OF_AVAILABLE_SAMPLES % PAGE_SIZE == 0
