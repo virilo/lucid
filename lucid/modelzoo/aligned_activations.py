@@ -24,7 +24,8 @@ from lucid.misc.io import load
 import numpy as np
 from cachetools.func import lru_cache
 
-PATH_TEMPLATE = "gs://modelzoo/aligned-activations/{}/{}-{:05d}-of-01000.npy" if not "LUCID_PATH_TEMPLATE" in globals() else LUCID_PATH_TEMPLATE
+PATH_TEMPLATE="gs://modelzoo/aligned-activations/{}/{}-{:05d}-of-01000.npy"
+PATH_TEMPLATE="/content/gdrive/My Drive/atlas/tfrecord-flowers/activations/train_1_of_1.npy"
 print("PATH_TEMPLATE: ", PATH_TEMPLATE)
 PAGE_SIZE = 10000
 NUMBER_OF_AVAILABLE_SAMPLES = 100000
