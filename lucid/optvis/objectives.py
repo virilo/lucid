@@ -184,7 +184,7 @@ def channel(layer, n_channel, batch=None):
 def direction(layer, vec, cossim_pow=0, batch=None):
   """Visualize a direction"""
   vec = vec[None, None, None]
-  vec = vec.astype("float32")
+  if not isinstance(vec, tf.Tensor): vec = vec.astype("float32")
 
   @handle_batch(batch)
   def inner(T):
@@ -196,7 +196,7 @@ direction_cossim = direction
 @wrap_objective(require_format='NHWC')
 def direction_neuron(layer_name, vec, x=None, y=None, cossim_pow=0, batch=None):
   """Visualize a single (x, y) position along the given direction"""
-  vec = vec.astype("float32")
+  if not isinstance(vec, tf.Tensor): vec = vec.astype("float32")
   @handle_batch(batch)
   def inner(T):
     layer = T(layer_name)
@@ -209,7 +209,7 @@ def direction_neuron(layer_name, vec, x=None, y=None, cossim_pow=0, batch=None):
 def tensor_direction(layer, vec, cossim_pow=0, batch=None):
   """Visualize a tensor."""
   assert len(vec.shape) in [3,4]
-  vec = vec.astype("float32")
+  if not isinstance(vec, tf.Tensor): vec = vec.astype("float32")
   if len(vec.shape) == 3:
     vec = vec[None]
   @handle_batch(batch)
